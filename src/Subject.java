@@ -9,6 +9,7 @@ public abstract class Subject
 {
     /******************** Constantes ********************/
     private final int ENERGY_MAX = 100;
+    public final int ENERGY_REPRODUCTION=60;
     
     /******************** Attributs ********************/
     
@@ -61,7 +62,10 @@ public abstract class Subject
     
     public void play(){}
     
-    protected void reproduce(){}
+    protected void reproduce()
+    {
+    	setEnergy(getEnergy()-ENERGY_REPRODUCTION);
+    }
     
     protected void move(){}
     
