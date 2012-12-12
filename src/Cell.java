@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 /**
  * Constructeur d'une cellule
@@ -11,6 +11,7 @@ public class Cell
 	private int vegetables;
 	private int meat;
 	
+	private ArrayList<Subject> subjects;
 	public Cell()
 	{
 		super();	
@@ -18,24 +19,36 @@ public class Cell
 		this.meat=0;
 	}
 	
-	int getVegetables()
+	
+	public ArrayList<Subject> getSubjects()
+	{
+		return subjects;
+	}
+	
+	public void setSubjects(ArrayList<Subject> subj)
+	{
+		subjects=subj;
+	}
+	
+	public int getVegetables()
 	{
 		return vegetables;
 	}
 	
-	void setVegetables(int value)
+	public void setVegetables(int value)
 	{
 		this.vegetables = value;
 	}
 	
-	int getMeat()
+	public int getMeat()
 	{
 		return meat;
 	}
 	
-	void setMeat(int value)
+	public void setMeat(int value)
 	{
 		this.meat = value;
 	}
+	
 	
 }
