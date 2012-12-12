@@ -8,23 +8,16 @@ public class Erratic extends Subject
 		super();
 	}
 	
-	public Erratic(int energy)
-	{
-		super();
-		this.setEnergy(energy);
-	}
-	
 	public Erratic(Cell position)
 	{
-		super();
-		this.setPosition(position);
+		super(position);
 	}
 	
-	public Erratic(int energy , Cell position)
+	
+	public Erratic(Cell position ,int energy)
 	{
-		super();
-		this.setEnergy(energy);
-		this.setPosition(position);
+		super(position , energy);
+
 	}
 	
     /******************** Accesseurs ********************/
