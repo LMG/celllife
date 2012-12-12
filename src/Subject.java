@@ -65,6 +65,8 @@ public abstract class Subject
     
     protected void move(){}
     
+    abstract Cell direction();
+    
     protected void die(){}
     
     protected void eat()
