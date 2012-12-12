@@ -20,7 +20,7 @@ public abstract class Subject
   
     public Subject ()
     {
-        this.energy = 100;
+        this.energy = ENERGY_MAX;
     }
     
     public Subject (Cell position)
@@ -70,7 +70,38 @@ public abstract class Subject
     protected void die(){}
     
     protected void eat()
-    {
-         
+    {   
+        while (this.energy != ENERGY_MAX && 
+                (position.getVegetables()!= 0 || position.getMeat()!= 0))
+        {
+            //Tant qu'il y a de la nourriture et que l'individu n'a pas son énergie au max
+            if(position.getVegetables() > position.getMeat())
+            {
+                if (this.energy + position.getVegetables() > ENERGY_MAX)
+                {
+                    position.setVegetables(position.getVegetables() - (ENERGY_MAX - this.energy));
+                    this.energy = ENERGY_MAX;
+                }
+                else
+                {
+                   this.energy += position.getVegetables();
+                   position.setVegetables(0);
+                }
+            }
+            else
+            {
+                if (this.energy + position.getMeat() > ENERGY_MAX)
+                {
+                    position.setMeat(position.getMeat() - (ENERGY_MAX - this.energy));
+                    this.energy = ENERGY_MAX;
+                }
+                else
+                {
+                   this.energy += position.getMeat();
+                   position.setMeat(0);
+                }
+            }
+            
+        }
     }  
 }
