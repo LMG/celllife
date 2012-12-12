@@ -9,7 +9,18 @@
  */
 public class Cannibal extends Subject
 {
-    
+    /******************** Constructeurs ********************/
+	public Cannibal(Cell position)
+	{
+		super(position);
+	}
+	
+	
+	public Cannibal(Cell position ,int energy)
+	{
+		super(position , energy);
+
+	}
     /******************** Méthodes ********************/
     
     protected Cell direction()

@@ -7,7 +7,21 @@
  *
  * @author gonsevi
  */
-public class Rabbit extends Subject{
+public class Rabbit extends Subject
+{
+    /******************** Constructeurs ********************/
+	public Rabbit(Cell position)
+	{
+		super(position);
+	}
+	
+	
+	public Rabbit(Cell position ,int energy)
+	{
+		super(position , energy);
+
+	}
+	
     
     /******************** Méthodes ********************/
     

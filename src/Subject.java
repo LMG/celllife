@@ -34,7 +34,7 @@ public abstract class Subject
     
     public Subject (Cell position, int energy)
     {
-        this.energy = ENERGY_MAX;
+        this.energy = energy;
         this.position = position;
     }
     
