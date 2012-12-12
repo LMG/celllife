@@ -7,6 +7,9 @@
 
 public abstract class Subject 
 {
+    /******************** Constantes ********************/
+    private final int ENERGY_MAX = 100;
+    
     /******************** Attributs ********************/
     
     private int energy;
@@ -22,13 +25,13 @@ public abstract class Subject
     
     public Subject (Cell position)
     {
-        this.energy = 100;
+        this.energy = ENERGY_MAX;
         this.position = position;
     }
     
     public Subject (Cell position, int energy)
     {
-        this.energy = energy;
+        this.energy = ENERGY_MAX;
         this.position = position;
     }
     
@@ -36,7 +39,7 @@ public abstract class Subject
     
     public void setEnergy (int energy)
     {
-        this.energy = energy;
+        this.energy = ENERGY_MAX;
     }
     
     public int getEnergy ()
@@ -66,6 +69,6 @@ public abstract class Subject
     
     protected void eat()
     {
-        this.energy = 
+         
     }  
 }
