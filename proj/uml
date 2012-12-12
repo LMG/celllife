@@ -1,0 +1,59 @@
+@startuml
+
+Class CellLife {
+	+ static void main ()
+}
+
+CellLife -> View
+CellLife -> Terminal
+
+class View {
+	+ void display()
+}
+
+class Terminal {
+  + void shell()
+}
+
+Terminal "1" <--> "1" World
+View --> "1" World
+
+class World {
+	+ ArrayList<Cell> getCells()
+	+ void stop()
+	+ void step()
+	+ void start()
+	+ void run()
+	- void init()
+
+	int lenght
+	int width
+}
+
+World --> "*" Cell
+
+class Cell {
+	int vegetables 
+	int meat
+	final int x
+	final int y
+}
+
+World --> "*" Subject
+Cell "1" <--> "*" Subject 
+Cannibal --|> Subject
+Glutton --|> Subject
+Erratic --|> Subject
+Rabbit --|> Subject
+
+abstract class Subject {
+	+ void play()
+	# void reproduce()
+	# void move()
+	# void die()
+	# void eat()
+	
+	int energy
+}
+
+@enduml
