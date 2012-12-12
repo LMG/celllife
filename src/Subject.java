@@ -8,12 +8,12 @@
 public abstract class Subject 
 {
     /******************** Constantes ********************/
-    private final int ENERGY_MAX = 100;
+    protected final int ENERGY_MAX = 100;
     
     /******************** Attributs ********************/
     
-    private int energy;
-    private Cell position;
+    protected int energy;
+    protected Cell position;
     
     
     /******************** Constructeurs ********************/
@@ -65,7 +65,7 @@ public abstract class Subject
     
     protected void move(){}
     
-    abstract Cell direction();
+    protected abstract Cell direction();
     
     protected void die(){}
     
