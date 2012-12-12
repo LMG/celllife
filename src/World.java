@@ -1,4 +1,6 @@
 
+
+
 public class World extends Thread{
 	
 	public static final int HEIGHT = 30 ;
@@ -19,7 +21,7 @@ public class World extends Thread{
 		int numberErratic = NUMBER_ERRATIC;
 		int numberGlutton = NUMBER_GLUTTON;
 		
-		double test;
+
 			
 		int randHeigth;
 		int randWidth;
@@ -79,7 +81,25 @@ public class World extends Thread{
 		{
 			try
 			{
-				Thread.sleep(10);
+				Thread.sleep(500);
+				for(int i =  HEIGHT-2; i >=  0; i--)
+				{
+					for(int j = 0 ; j < WIDTH-1 ; j++)
+					{
+						while(!cellTab[i][j].getSubjects().isEmpty())
+						{
+							try{
+							cellTab[i+1][j+1].getSubjects().add(cellTab[i][j].getSubjects().get(0));
+							cellTab[i][j].getSubjects().remove(0);
+							}catch(Exception ex)
+							{
+								System.out.println(ex);
+							}
+						}
+						
+					}
+					
+				}
 				
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
