@@ -58,13 +58,13 @@ public class World extends Thread{
 		}
 		
 		//placement des Gluttons
-//		while(numberGlutton != 0)
-//		{
-//			randHeigth = ((int) Math.random()) % HEIGHT;
-//			randWidth = ((int) Math.random()) % WIDTH;
-//			cellTab[randHeigth][randWidth].getSubjects().add( new Glutton(cellTab[randHeigth][randWidth], 100));
-//			numberGlutton--;
-//		}
+		while(numberGlutton != 0)
+		{
+			randHeigth = ((int) Math.random()) % HEIGHT;
+			randWidth = ((int) Math.random()) % WIDTH;
+			cellTab[randHeigth][randWidth].getSubjects().add( new Glutton(cellTab[randHeigth][randWidth], 100));
+			numberGlutton--;
+		}
 	}
 	
 	
