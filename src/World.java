@@ -9,19 +9,19 @@ public class World extends Thread{
 	public static final int NUMBER_ERRATIC = 10;
 	public static final int NUMBER_GLUTTON = 10;
 	
-	private Cell cellTab [][] ;
+	public Cell cellTab [][] = new Cell[HEIGHT][WIDTH];
 	
 	
 	public void init()
 	{
-	int numberRabbit = NUMBER_RABBIT;
-	int numberCannibal = NUMBER_CANNIBAL;
-	int numberErratic = NUMBER_ERRATIC;
-	int numberGlutton = NUMBER_GLUTTON;
+		int numberRabbit = NUMBER_RABBIT;
+		int numberCannibal = NUMBER_CANNIBAL;
+		int numberErratic = NUMBER_ERRATIC;
+		int numberGlutton = NUMBER_GLUTTON;
+			
+		int randHeigth;
+		int randWidth;
 		
-	int randHeigth;
-	int randWidth;
-	
 		for(int i=0; i < HEIGHT; i++)
 		{
 			for (int j = 0 ; j < WIDTH ; j++)
@@ -44,6 +44,7 @@ public class World extends Thread{
 	
 	public void run()
 	{
+		init();
 		while(true)
 		{
 			try

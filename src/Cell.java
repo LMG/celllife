@@ -11,12 +11,11 @@ public class Cell
 	private int vegetables;
 	private int meat;
 	
-	private ArrayList<Subject> subjects;
+	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	
 	
 	public Cell(int x , int y)
 	{
-		super();	
 		this.x = x;
 		this.y= y;
 		this.vegetables=0;
@@ -25,9 +24,7 @@ public class Cell
 	
 	public Cell(int x , int y , int meat , int vegetagles)
 	{
-		super();
-		this.x = x;
-		this.y= y;
+		this(x, y);
 		this.vegetables=vegetagles;
 		this.meat=meat;
 	}
