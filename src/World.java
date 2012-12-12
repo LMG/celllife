@@ -1,7 +1,7 @@
 
 public class World extends Thread{
 	
-	public final int LENGTHT = 30 ;
+	public final int HIGHT = 30 ;
 	public final int WIDTH= 30 ;
 	
 	
@@ -10,7 +10,7 @@ public class World extends Thread{
 	
 	public void init()
 	{
-		for(int i=0; i < this.LENGTHT; i++)
+		for(int i=0; i < this.HIGHT; i++)
 		{
 			for (int j = 0 ; j < this.WIDTH ; j++)
 			{
