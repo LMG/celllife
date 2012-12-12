@@ -3,10 +3,7 @@
 public class Erratic extends Subject
 {
     /******************** Constructeurs ********************/
-	public Erratic()
-	{
-		super();
-	}
+	
 	
 	public Erratic(Cell position)
 	{
@@ -20,7 +17,7 @@ public class Erratic extends Subject
 
 	}
 	
-    /******************** Accesseurs ********************/
+
 
 	protected Cell direction()
 	{
