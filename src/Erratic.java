@@ -22,8 +22,8 @@ public class Erratic extends Subject
 	protected Cell direction()
 	{
 		//déplacement aléaoire 
-		int randx = (((int) Math.random()) % 3)-1;
-		int randy = (((int) Math.random()) % 3)-1;
+		int randx = (int) (((Math.random())*100) % 3)-1;
+		int randy = (int) (((Math.random())*100) % 3)-1;
 		
 		while(randx == 0 && randy == 0 )
 		{

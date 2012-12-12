@@ -18,6 +18,8 @@ public class World extends Thread{
 		int numberCannibal = NUMBER_CANNIBAL;
 		int numberErratic = NUMBER_ERRATIC;
 		int numberGlutton = NUMBER_GLUTTON;
+		
+		double test;
 			
 		int randHeigth;
 		int randWidth;
@@ -33,8 +35,8 @@ public class World extends Thread{
 		//placement des erratics
 		while(numberErratic != 0)
 		{
-			randHeigth = ((int) Math.random()) % HEIGHT;
-			randWidth = ((int) Math.random()) % WIDTH;
+			randHeigth = (int) ((Math.random())*100) % HEIGHT;
+			randWidth = (int) ((Math.random())*100) % WIDTH;
 			cellTab[randHeigth][randWidth].getSubjects().add( new Erratic(cellTab[randHeigth][randWidth], 100));
 			numberErratic--;
 		}
@@ -42,8 +44,9 @@ public class World extends Thread{
 		//placement des Rabbits
 		while(numberRabbit != 0)
 		{
-			randHeigth = ((int) Math.random()) % HEIGHT;
-			randWidth = ((int) Math.random()) % WIDTH;
+			
+			randHeigth = (int) ((Math.random())*100) % HEIGHT;
+			randWidth = (int) ((Math.random())*100) % WIDTH;
 			cellTab[randHeigth][randWidth].getSubjects().add( new Rabbit(cellTab[randHeigth][randWidth], 100));
 			numberRabbit--;
 		}
@@ -51,8 +54,8 @@ public class World extends Thread{
 		//placement des Cannibals
 		while(numberCannibal != 0)
 		{
-			randHeigth = ((int) Math.random()) % HEIGHT;
-			randWidth = ((int) Math.random()) % WIDTH;
+			randHeigth = (int) ((Math.random())*100) % HEIGHT;
+			randWidth = (int) ((Math.random())*100) % WIDTH;
 			cellTab[randHeigth][randWidth].getSubjects().add( new Cannibal(cellTab[randHeigth][randWidth], 100));
 			numberCannibal--;
 		}
@@ -60,8 +63,8 @@ public class World extends Thread{
 		//placement des Gluttons
 		while(numberGlutton != 0)
 		{
-			randHeigth = ((int) Math.random()) % HEIGHT;
-			randWidth = ((int) Math.random()) % WIDTH;
+			randHeigth = (int) ((Math.random())*100) % HEIGHT;
+			randWidth = (int) ((Math.random())*100) % WIDTH;
 			cellTab[randHeigth][randWidth].getSubjects().add( new Glutton(cellTab[randHeigth][randWidth], 100));
 			numberGlutton--;
 		}
