@@ -6,6 +6,7 @@ Class CellLife {
 
 CellLife -> View
 CellLife -> Terminal
+CellLife --> World
 
 class View {
 	+ void display()
