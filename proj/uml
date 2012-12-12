@@ -49,8 +49,9 @@ Rabbit --|> Subject
 
 abstract class Subject {
 	+ void play()
+	- void move()
 	# void reproduce()
-	# void move()
+	# Cell direction()	
 	# void die()
 	# void eat()
 	
