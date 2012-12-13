@@ -77,19 +77,23 @@ public class World extends Thread{
 	public void run()
 	{
 		init();
+		int randHeigth;
+		int randWidth;
 		while(true)
 		{
 			try
 			{
 				Thread.sleep(500);
-				for(int i =  HEIGHT-2; i >=  0; i--)
+				for(int i =  HEIGHT-2; i >=  1; i--)
 				{
-					for(int j = 0 ; j < WIDTH-1 ; j++)
+					for(int j = 1 ; j < WIDTH-1 ; j++)
 					{
 						while(!cellTab[i][j].getSubjects().isEmpty())
 						{
 							try{
-							cellTab[i+1][j+1].getSubjects().add(cellTab[i][j].getSubjects().get(0));
+							randHeigth = (int) (((Math.random())*100) % 3)-1;
+							randWidth = (int) (((Math.random())*100) % 3)-1;
+							cellTab[i+randHeigth][j+randWidth].getSubjects().add(cellTab[i][j].getSubjects().get(0));
 							cellTab[i][j].getSubjects().remove(0);
 							}catch(Exception ex)
 							{
