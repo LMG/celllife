@@ -16,14 +16,6 @@ public class CellLife
 		
 		theView = new View(theWorld);
 		theView.start();
-		
-		while(true){
-			try
-			{
-				Thread.sleep(10);
-			}
-			catch(InterruptedException ex) {System.out.println("?");}
-		}
 	}
 	
 	/**
