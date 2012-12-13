@@ -116,7 +116,7 @@ public class View extends Thread{
 			window.repaint();
 			try
 			{
-				Thread.sleep(500);
+				Thread.sleep(10);
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
