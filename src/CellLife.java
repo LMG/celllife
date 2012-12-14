@@ -8,7 +8,7 @@ public class CellLife
 	public CellLife()
 	{
 		System.out.println("Création du monde.");
-		theWorld = new World();
+		theWorld = new World(theView);
 		theWorld.start();
 
 		System.out.println("Création des vues.");

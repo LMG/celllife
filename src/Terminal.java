@@ -16,30 +16,33 @@ public class Terminal extends Thread {
 	
 	Command getCommand()
 	{
-		Command theCommand;
+		Command theCommand=null;
 		String theString = new String();
 		
-		System.out.print(">");
-		try{
-			theString = bufferedReader.readLine();
-		}catch(IOException e){
-			System.out.println("Fail: " + e);
-		}
-		
-		if(theString.equals("stop"))
+		while(theCommand == null)
 		{
-			theCommand = Command.STOP;
+			System.out.print(">");
+			try{
+				theString = bufferedReader.readLine();
+			}catch(IOException e){
+				System.out.println("Fail: " + e);
+			}
+			
+			if(theString.equals("stop"))
+			{
+				theCommand = Command.STOP;
+			}
+			else if(theString.equals("start"))
+			{
+				theCommand = Command.START;
+			}
+			else if(theString.equals("finish"))
+			{
+				theCommand = Command.FINISH;
+			}
+			else
+				theCommand = null;
 		}
-		else if(theString.equals("start"))
-		{
-			theCommand = Command.START;
-		}
-		else if(theString.equals("finish"))
-		{
-			theCommand = Command.FINISH;
-		}
-		else
-			theCommand = Command.FINISH;
 		
 		return theCommand;
 	}
@@ -47,6 +50,7 @@ public class Terminal extends Thread {
 	//returns : the running value of the loop.
 	boolean actOnCommand()
 	{
+		boolean keepGoing =true;
 		switch(getCommand())
 		{
 			case STOP:
@@ -56,9 +60,12 @@ public class Terminal extends Thread {
 				theWorld.startSimulation();
 				break;
 			case FINISH:
-				return false;
+				try{
+				theWorld.endSimulation();
+				}catch(Exception e){System.out.println(e);}
+				keepGoing=false;
 		}
-		return true;
+		return keepGoing;
 	}
 	
 	public void run ()

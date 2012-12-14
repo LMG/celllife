@@ -15,7 +15,8 @@ public class World extends Thread{
 	public Cell cellTab [][] = new Cell[HEIGHT][WIDTH];
 	public ArrayList<Subject> subjects = new ArrayList<Subject>();
 	
-	private boolean run=true;
+	private boolean run=true, simulationRunning=true;
+	private View theView;
 	
 	public void startSimulation()
 	{
@@ -24,6 +25,16 @@ public class World extends Thread{
 	public void stopSimulation()
 	{
 		run=false;
+	}
+	public void endSimulation()
+	{
+		simulationRunning=false;
+		theView.endSimulation();
+	}
+	
+	World(View theView)
+	{
+		this.theView = theView;
 	}
 	
 	public void init()
@@ -109,17 +120,15 @@ public class World extends Thread{
 	{
 		init();
 		
-		while(run)
+		while(simulationRunning)
 		{
-			try
+			if(run)
 			{
-				
 				//Creating the list of subjects, ordered by energy.
 				ArrayList<Subject> subjectsByEnergy = sortByEnergy(subjects);
 				
 				for(Subject s: subjectsByEnergy)
 				{
-					Thread.sleep(10);
 					Cell currentCell = s.position;
 
 					int randWidth = (int) (((Math.random())*100) % 3)-1;
@@ -136,6 +145,10 @@ public class World extends Thread{
 					cellTab[newX][newY].getSubjects().add(s);
 					s.position=cellTab[newX][newY];
 				}
+			}
+			try
+			{
+				Thread.sleep(100);
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
