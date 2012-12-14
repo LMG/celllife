@@ -7,14 +7,15 @@ public class CellLife
 	
 	public CellLife()
 	{
-		System.out.println("Création des vues.");
-		theTerminal = new Terminal();
-		
 		System.out.println("Création du monde.");
 		theWorld = new World();
 		theWorld.start();
-		
+
+		System.out.println("Création des vues.");
+		theTerminal = new Terminal(theWorld);
 		theView = new View(theWorld);
+		
+		theTerminal.start();
 		theView.start();
 	}
 	

@@ -15,6 +15,17 @@ public class World extends Thread{
 	public Cell cellTab [][] = new Cell[HEIGHT][WIDTH];
 	public ArrayList<Subject> subjects = new ArrayList<Subject>();
 	
+	private boolean run=true;
+	
+	public void startSimulation()
+	{
+		run=true;
+	}
+	public void stopSimulation()
+	{
+		run=false;
+	}
+	
 	public void init()
 	{	
 		int randHeigth;
@@ -76,7 +87,10 @@ public class World extends Thread{
 		}
 	}
 	
-	//returns a list of subjects sorted by energy
+	/*
+	 * @param subjectList une liste de sujets quelconque.
+	 * @return orderedList une nouvelle liste des sujets non modifiée.
+	 */
 	ArrayList<Subject> sortByEnergy(ArrayList<Subject> subjectList)
 	{
 		ArrayList<Subject> orderedList = new ArrayList<Subject>(subjectList);
@@ -95,7 +109,7 @@ public class World extends Thread{
 	{
 		init();
 		
-		while(true)
+		while(run)
 		{
 			try
 			{
