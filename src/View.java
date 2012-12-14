@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 
 public class View extends Thread{
 	public static final int SPRITE_HEIGHT=16, SPRITE_WIDTH=16;
-	public static final int HEIGHT=(SPRITE_HEIGHT+1)*World.HEIGHT, WIDTH=(SPRITE_WIDTH+1)*World.WIDTH;
+	public static final int HEIGHT=(SPRITE_HEIGHT)*World.HEIGHT, WIDTH=(SPRITE_WIDTH)*World.WIDTH;
 
 	//sprites
 	Hashtable<String, BufferedImage> sprites = new Hashtable<String, BufferedImage>();
