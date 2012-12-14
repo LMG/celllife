@@ -15,7 +15,8 @@ public class World extends Thread{
 	public Cell cellTab [][] = new Cell[HEIGHT][WIDTH];
 	public ArrayList<Subject> subjects = new ArrayList<Subject>();
 	
-	private boolean run=true;
+	private boolean run=true, simulationRunning=true;
+	private View theView;
 	
 	public void startSimulation()
 	{
@@ -24,6 +25,16 @@ public class World extends Thread{
 	public void stopSimulation()
 	{
 		run=false;
+	}
+	public void endSimulation()
+	{
+		simulationRunning=false;
+		theView.endSimulation();
+	}
+	
+	World(View theView)
+	{
+		this.theView = theView;
 	}
 	
 	public void init()
@@ -109,7 +120,7 @@ public class World extends Thread{
 	{
 		init();
 		
-		while(true)
+		while(simulationRunning)
 		{
 			if(run)
 			{

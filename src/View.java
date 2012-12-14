@@ -18,6 +18,12 @@ public class View extends Thread{
 	//sprites
 	Hashtable<String, BufferedImage> sprites = new Hashtable<String, BufferedImage>();
 	private World theWorld;
+	private boolean simulationRunning=true;
+	
+	public void endSimulation()
+	{
+		simulationRunning=false;
+	}
 
 	class CellLifeComponent extends JComponent {
 		//car elle est serializable apparement.
@@ -111,7 +117,7 @@ public class View extends Thread{
 		window.setVisible(true);
 		
 		//display loop
-		while(true)
+		while(simulationRunning)
 		{
 			window.repaint();
 			try
@@ -120,5 +126,8 @@ public class View extends Thread{
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
+		
+		window.setVisible(false);
+		window.dispose();
 	}
 }
