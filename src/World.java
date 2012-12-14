@@ -17,6 +17,12 @@ public class World extends Thread{
 	
 	private boolean run=true, simulationRunning=true;
 	private View theView;
+
+	public Cell getCell(int height ,int width)
+	{
+		return cellTab[height][width];
+	}
+
 	
 	public void startSimulation()
 	{
