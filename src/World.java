@@ -1,5 +1,6 @@
-
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class World extends Thread{
 	
@@ -12,19 +13,13 @@ public class World extends Thread{
 	public static final int NUMBER_GLUTTON = 10;
 	
 	public Cell cellTab [][] = new Cell[HEIGHT][WIDTH];
-	
+	public ArrayList<Subject> subjects = new ArrayList<Subject>();
 	
 	public void init()
-	{
-		int numberRabbit = NUMBER_RABBIT;
-		int numberCannibal = NUMBER_CANNIBAL;
-		int numberErratic = NUMBER_ERRATIC;
-		int numberGlutton = NUMBER_GLUTTON;
-		
-
-			
+	{	
 		int randHeigth;
 		int randWidth;
+		Subject subject;
 		
 		for(int i=0; i < HEIGHT; i++)
 		{
@@ -34,77 +29,99 @@ public class World extends Thread{
 			}
 		}
 		
+		//Adding all the subjects to the world
 		//placement des erratics
-		while(numberErratic != 0)
+		for(int numberErratic = NUMBER_ERRATIC; numberErratic >= 0; numberErratic--)
 		{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
-			cellTab[randHeigth][randWidth].getSubjects().add( new Erratic(cellTab[randHeigth][randWidth], 100));
-			numberErratic--;
+			
+			subject = new Erratic(cellTab[randHeigth][randWidth], 100);
+			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+			subjects.add(subject);
 		}
 		
 		//placement des Rabbits
-		while(numberRabbit != 0)
+		for(int numberRabbit = NUMBER_RABBIT; numberRabbit>= 0; numberRabbit--)
 		{
 			
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
-			cellTab[randHeigth][randWidth].getSubjects().add( new Rabbit(cellTab[randHeigth][randWidth], 100));
-			numberRabbit--;
+			
+			subject = new Rabbit(cellTab[randHeigth][randWidth], 100);
+			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+			subjects.add(subject);
 		}
 		
 		//placement des Cannibals
-		while(numberCannibal != 0)
+		for(int numberCannibal= NUMBER_CANNIBAL; numberCannibal>= 0; numberCannibal--)
 		{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
-			cellTab[randHeigth][randWidth].getSubjects().add( new Cannibal(cellTab[randHeigth][randWidth], 100));
-			numberCannibal--;
+			
+			subject = new Cannibal(cellTab[randHeigth][randWidth], 100);
+			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+			subjects.add(subject);
 		}
 		
 		//placement des Gluttons
-		while(numberGlutton != 0)
+		for(int numberGlutton= NUMBER_GLUTTON; numberGlutton>= 0; numberGlutton--)
 		{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
-			cellTab[randHeigth][randWidth].getSubjects().add( new Glutton(cellTab[randHeigth][randWidth], 100));
-			numberGlutton--;
+			
+ 			subject = new Glutton(cellTab[randHeigth][randWidth], 100);
+			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+			subjects.add(subject);
 		}
 	}
 	
-	
+	//returns a list of subjects sorted by energy
+	ArrayList<Subject> sortByEnergy(ArrayList<Subject> subjectList)
+	{
+		ArrayList<Subject> orderedList = new ArrayList<Subject>(subjectList);
+		
+		Collections.sort(orderedList, new Comparator<Subject> () {
+			public int compare(Subject a, Subject b)
+			{
+				return a.energy - b.energy;
+			}
+		});
+		
+		return orderedList;
+	}
 	
 	public void run()
 	{
 		init();
-		int randHeigth;
-		int randWidth;
+		
 		while(true)
 		{
 			try
 			{
-				Thread.sleep(500);
-				for(int i =  HEIGHT-2; i >=  1; i--)
-				{
-					for(int j = 1 ; j < WIDTH-1 ; j++)
-					{
-						while(!cellTab[i][j].getSubjects().isEmpty())
-						{
-							try{
-							randHeigth = (int) (((Math.random())*100) % 3)-1;
-							randWidth = (int) (((Math.random())*100) % 3)-1;
-							cellTab[i+randHeigth][j+randWidth].getSubjects().add(cellTab[i][j].getSubjects().get(0));
-							cellTab[i][j].getSubjects().remove(0);
-							}catch(Exception ex)
-							{
-								System.out.println(ex);
-							}
-						}
-						
-					}
-					
-				}
 				
+				//Creating the list of subjects, ordered by energy.
+				ArrayList<Subject> subjectsByEnergy = sortByEnergy(subjects);
+				
+				for(Subject s: subjectsByEnergy)
+				{
+					Thread.sleep(10);
+					Cell currentCell = s.position;
+
+					int randWidth = (int) (((Math.random())*100) % 3)-1;
+					int randHeigt = (int) (((Math.random())*100) % 3)-1;
+					int newX = currentCell.x+randWidth;
+					int newY = currentCell.y+randHeigt;
+					
+					newX = newX>29?29:newX;
+					newX = newX<0?0:newX;
+					newY = newY>29?29:newY;
+					newY = newY<0?0:newY;
+					
+					currentCell.getSubjects().remove(s);
+					cellTab[newX][newY].getSubjects().add(s);
+					s.position=cellTab[newX][newY];
+				}
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
