@@ -109,17 +109,15 @@ public class World extends Thread{
 	{
 		init();
 		
-		while(run)
+		while(true)
 		{
-			try
+			if(run)
 			{
-				
 				//Creating the list of subjects, ordered by energy.
 				ArrayList<Subject> subjectsByEnergy = sortByEnergy(subjects);
 				
 				for(Subject s: subjectsByEnergy)
 				{
-					Thread.sleep(10);
 					Cell currentCell = s.position;
 
 					int randWidth = (int) (((Math.random())*100) % 3)-1;
@@ -136,6 +134,10 @@ public class World extends Thread{
 					cellTab[newX][newY].getSubjects().add(s);
 					s.position=cellTab[newX][newY];
 				}
+			}
+			try
+			{
+				Thread.sleep(100);
 			}
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
