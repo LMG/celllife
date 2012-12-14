@@ -67,7 +67,7 @@ public class View extends Thread{
 						{
 							currentSprite = sprites.get("void");
 						}
-						g2d.drawImage(currentSprite, null, i*(SPRITE_WIDTH+1), j*(SPRITE_HEIGHT+1));
+						g2d.drawImage(currentSprite, null, i*(SPRITE_WIDTH), j*(SPRITE_HEIGHT));
 					}
 					catch(Exception ex)
 					{
