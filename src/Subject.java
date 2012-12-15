@@ -93,7 +93,13 @@ public abstract class Subject
     
     protected abstract Cell direction();
     
-    protected void die(){}
+    protected void die()
+    {
+    	if(this.energy <= 0 )
+    	{
+    		this.position.getSubjects().remove(this);
+    	}
+    }
     
     protected void eat()
     {   
