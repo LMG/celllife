@@ -36,7 +36,7 @@ public class Terminal extends Thread {
 			{
 				theCommand = Command.START;
 			}
-			else if(theString.equals("step"))
+			else if(theString.equals("step")||theString.equals("s"))
 			{
 				theCommand = Command.STEP;
 			}
