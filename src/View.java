@@ -24,6 +24,14 @@ public class View extends Thread{
 	{
 		simulationRunning=false;
 	}
+	
+	private void drawSprite(String sprite, int x, int y, Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D) g;
+		BufferedImage currentSprite = null;
+		currentSprite = sprites.get(sprite);
+		g2d.drawImage(currentSprite, null, x*(SPRITE_WIDTH), y*(SPRITE_HEIGHT));
+	}
 
 	class CellLifeComponent extends JComponent {
 		//car elle est serializable apparement.
@@ -40,44 +48,41 @@ public class View extends Thread{
 		public void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
-			Graphics2D g2d = (Graphics2D) g;
 			
 			for(int i=0; i<World.WIDTH; i ++)
 			{
 				for(int j=0; j<World.HEIGHT; j++)
 				{
-					BufferedImage currentSprite = null;
+					//draw background
+					drawSprite("void", i, j, g);
+
+					//draw food
+					if(theWorld.cellTab[i][j].getVegetables()>0)
+						drawSprite("vegetable", i, j, g);
+					if(theWorld.cellTab[i][j].getMeat()>0)
+						drawSprite("meat", i, j, g);
+					
+					//draw subjects
 					Subject subject = null;
-					try{
-						if(theWorld.cellTab[i][j].getSubjects().size()>0)
-						{
-							subject = theWorld.cellTab[i][j].getSubjects().get(0);
-							if( subject instanceof Cannibal)
-							{
-								currentSprite = sprites.get("cannibal");
-							}
-							else if(subject instanceof Glutton)
-							{
-								currentSprite = sprites.get("glutton");
-							}
-							else if(subject instanceof Erratic)
-							{
-								currentSprite = sprites.get("erratic");
-							}
-							else if(subject instanceof Rabbit)
-							{
-								currentSprite = sprites.get("rabbit");
-							}
-						}
-						else
-						{
-							currentSprite = sprites.get("void");
-						}
-						g2d.drawImage(currentSprite, null, i*(SPRITE_WIDTH), j*(SPRITE_HEIGHT));
-					}
-					catch(Exception ex)
+					for(int nbSubjects=theWorld.cellTab[i][j].getSubjects().size()-1; nbSubjects>0; nbSubjects--)
 					{
-						System.out.println(ex);
+						subject = theWorld.cellTab[i][j].getSubjects().get(nbSubjects);
+						if( subject instanceof Cannibal)
+						{
+							drawSprite("cannibal", i, j, g);
+						}
+						else if(subject instanceof Glutton)
+						{
+							drawSprite("glutton", i, j, g);
+						}
+						else if(subject instanceof Erratic)
+						{
+							drawSprite("erratic", i, j, g);
+						}
+						else if(subject instanceof Rabbit)
+						{
+							drawSprite("rabbit", i, j, g);
+						}
 					}
 				}
 			}
@@ -106,6 +111,8 @@ public class View extends Thread{
 			sprites.put("erratic", ImageIO.read(new File("ressources/erratic.png")));
 			sprites.put("rabbit", ImageIO.read(new File("ressources/rabbit.png")));
 			sprites.put("void", ImageIO.read(new File("ressources/void.png")));
+			sprites.put("vegetable", ImageIO.read(new File("ressources/vegetables.png")));
+			sprites.put("meat", ImageIO.read(new File("ressources/meat.png")));
 		}
 		catch(IOException ex)
 		{
