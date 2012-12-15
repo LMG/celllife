@@ -21,24 +21,28 @@ public class Erratic extends Subject
 
 	protected Cell direction()
 	{
+		//current position
+		int positionX=this.position.x;
+		int positionY=this.position.y;
+		
 		//déplacement aléaoire 
-		int randx = (int) (((Math.random())*100) % 3)-1;
-		int randy = (int) (((Math.random())*100) % 3)-1;
+		int randx = (int) (((Math.random())*100) % 2)-1;
+		int randy = (int) (((Math.random())*100) % 2)-1;
 		
 		while(randx == 0 && randy == 0 )
 		{
-			randx = (((int) Math.random()) % 3)-1;
-			randy = (((int) Math.random()) % 3)-1;
+			randx = (((int) Math.random()) % 2)-1;
+			randy = (((int) Math.random()) % 2)-1;
 		}
-			
-		//TODO
-		//récupérer la cellule actuelle
-		//trouver la cellule x+randx et y+randy dans World
-		//renvoyer cette cellule
 		
+		if (positionX+randx<=World.HEIGHT && positionX+randx>= 0 )
+			positionX = positionX+randx;
 		
-		//RETURN TEMPORAIRE POUR COMMIT ( en attente de la clase world)
-		return this.getPosition();
-	}
+		if (positionY+randy<=World.HEIGHT && positionY+randy>= 0 )
+			positionY = positionY+randy;
+		
+		return(CellLife.theWorld.getCell(positionX, positionY));
+		
+			}
 	
 }
