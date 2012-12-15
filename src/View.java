@@ -64,7 +64,7 @@ public class View extends Thread{
 					
 					//draw subjects
 					Subject subject = null;
-					for(int nbSubjects=theWorld.cellTab[i][j].getSubjects().size()-1; nbSubjects>0; nbSubjects--)
+					for(int nbSubjects=theWorld.cellTab[i][j].getSubjects().size()-1; nbSubjects>=0; nbSubjects--)
 					{
 						subject = theWorld.cellTab[i][j].getSubjects().get(nbSubjects);
 						if( subject instanceof Cannibal)
