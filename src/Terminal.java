@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 
 public class Terminal extends Thread {
-	public enum Command { START, STOP, FINISH }
+	public enum Command { START, STOP, STEP, FINISH }
 	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 	
 	private World theWorld;
@@ -18,7 +18,7 @@ public class Terminal extends Thread {
 	{
 		Command theCommand=null;
 		String theString = new String();
-		
+
 		while(theCommand == null)
 		{
 			System.out.print(">");
@@ -36,12 +36,18 @@ public class Terminal extends Thread {
 			{
 				theCommand = Command.START;
 			}
+			else if(theString.equals("step"))
+			{
+				theCommand = Command.STEP;
+			}
 			else if(theString.equals("finish"))
 			{
 				theCommand = Command.FINISH;
 			}
 			else
+			{
 				theCommand = null;
+			}
 		}
 		
 		return theCommand;
@@ -58,6 +64,9 @@ public class Terminal extends Thread {
 				break;
 			case START:
 				theWorld.startSimulation();
+				break;
+			case STEP:
+				theWorld.step();
 				break;
 			case FINISH:
 				try{
