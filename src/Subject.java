@@ -63,7 +63,10 @@ public abstract class Subject
     
     /******************** Méthodes ********************/
     
-    public void play(){}
+    public void play()
+    {
+   
+    }
     
     protected void reproduce()
     {
@@ -73,6 +76,8 @@ public abstract class Subject
     
     protected void move()
     {
+    	int deplacementX=0;
+    	int deplacementY=0;
     	Cell currentCell = this.position;
     	
     	//new cell after moving
@@ -81,11 +86,21 @@ public abstract class Subject
     	//delete subjects on the old cell
 		currentCell.getSubjects().remove(this);
 		
+		if(destinationCell.x-currentCell.x > 0)
+			deplacementX = +1;
+		if(destinationCell.x-currentCell.x < 0)
+			deplacementX = -1;
+		
+		if(destinationCell.y-currentCell.y > 0)
+			deplacementY = +1;
+		if(destinationCell.y-currentCell.y < 0)
+			deplacementY = -1;
+				
 		//add subject on the new cell
-		CellLife.theWorld.cellTab[destinationCell.x][destinationCell.y].getSubjects().add(this);
+		CellLife.theWorld.cellTab[this.position.x+deplacementX][this.position.y+deplacementY].getSubjects().add(this);
 		
 		//refresh local position
-		this.position=CellLife.theWorld.cellTab[destinationCell.x][destinationCell.y];
+		this.position=CellLife.theWorld.cellTab[this.position.x+deplacementX][this.position.y+deplacementY];
 		
 		//less energy after moving
 		this.energy = this.energy-ENERGY_MOVE;
