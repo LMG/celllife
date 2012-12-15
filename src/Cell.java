@@ -29,6 +29,20 @@ public class Cell
 		this.meat=meat;
 	}
 	
+	//return if the cell contain Rabbit
+	public boolean containRabbit()
+	{
+		int index = 0;
+		boolean lapinFound = false;
+		while(subjects.get(index) != null)
+		{
+			if( subjects.get(index) instanceof Cannibal)
+				lapinFound = true;
+			index++;
+		}
+		return lapinFound;
+	}
+	
 	public ArrayList<Subject> getSubjects()
 	{
 		return subjects;
