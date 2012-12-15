@@ -11,6 +11,7 @@ public abstract class Subject
 
 	protected final int ENERGY_MAX = 100;
     public final int ENERGY_REPRODUCTION=60;
+    public final int ENERGY_MOVE = 10;
 
     
     /******************** Attributs ********************/
@@ -69,7 +70,26 @@ public abstract class Subject
     	setEnergy(getEnergy()-ENERGY_REPRODUCTION);
     }
     
-    protected void move(){}
+    
+    protected void move()
+    {
+    	Cell currentCell = this.position;
+    	
+    	//new cell after moving
+    	Cell destinationCell = this.direction();
+    	
+    	//delete subjects on the old cell
+		currentCell.getSubjects().remove(this);
+		
+		//add subject on the new cell
+		CellLife.theWorld.cellTab[destinationCell.x][destinationCell.y].getSubjects().add(this);
+		
+		//refresh local position
+		this.position=CellLife.theWorld.cellTab[destinationCell.x][destinationCell.y];
+		
+		//less energy after moving
+		this.energy = this.energy-ENERGY_MOVE;
+    }
     
     protected abstract Cell direction();
     
