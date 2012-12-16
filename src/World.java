@@ -129,21 +129,7 @@ public class World extends Thread{
 		
 		for(Subject s: subjectsByEnergy)
 		{
-			Cell currentCell = s.position;
-
-			int randWidth = (int) (((Math.random())*100) % 3)-1;
-			int randHeigt = (int) (((Math.random())*100) % 3)-1;
-			int newX = currentCell.x+randWidth;
-			int newY = currentCell.y+randHeigt;
-			
-			newX = newX>29?29:newX;
-			newX = newX<0?0:newX;
-			newY = newY>29?29:newY;
-			newY = newY<0?0:newY;
-			
-			currentCell.getSubjects().remove(s);
-			cellTab[newX][newY].getSubjects().add(s);
-			s.position=cellTab[newX][newY];
+			s.move();
 		}
 	}
 	

@@ -34,7 +34,7 @@ public class Cell
 	{
 		int index = 0;
 		boolean lapinFound = false;
-		while(subjects.get(index) != null)
+		while(subjects.size()>index && subjects.get(index) != null)
 		{
 			if( subjects.get(index) instanceof Cannibal)
 				lapinFound = true;
