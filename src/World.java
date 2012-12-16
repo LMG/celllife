@@ -4,8 +4,8 @@ import java.util.Comparator;
 
 public class World extends Thread{
 	
-	public static final int HEIGHT = 30 ;
-	public static final int WIDTH= 30 ;
+	public static final int HEIGHT = 40 ;
+	public static final int WIDTH= 40 ;
 	
 	public static final int NUMBER_RABBIT = 10;
 	public static final int NUMBER_CANNIBAL = 10;

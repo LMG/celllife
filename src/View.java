@@ -28,9 +28,8 @@ public class View extends Thread{
 	private void drawSprite(String sprite, int x, int y, Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
-		BufferedImage currentSprite = null;
-		currentSprite = sprites.get(sprite);
-		g2d.drawImage(currentSprite, null, x*(SPRITE_WIDTH), y*(SPRITE_HEIGHT));
+		
+		g2d.drawImage(sprites.get(sprite), null, x*(SPRITE_WIDTH), y*(SPRITE_HEIGHT));
 	}
 
 	class CellLifeComponent extends JComponent {
