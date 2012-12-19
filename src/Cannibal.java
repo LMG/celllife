@@ -46,10 +46,14 @@ public class Cannibal extends Subject
     		//check heigth
 	    	for(int i= cmptXmin ; i <= cmptXmax ; i++ )
 	    	{
-	    		//	*** <== check this raw
+	    		System.out.println("cmptXmin"); 
+	    		System.out.println(cmptXmin); 
+	    		System.out.println("i"); 
+	    		System.out.println(i); 
+	    		//	*** <== check this row
 	    		//	*X*
 	    		//	***
-		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y-cmptYmin).getMeat() !=0 )
+		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y+cmptYmin).getMeat() !=0 )
 		    	{
 		    		foodFound=true;	
 		    		positionX=this.position.x+i;
@@ -68,10 +72,12 @@ public class Cannibal extends Subject
 	    	}
 	    	for(int i = cmptYmin ; i <= cmptYmax ; i++ )
 	    	{
+	    		System.out.println("cmptYmin");
+	    		System.out.println(cmptYmin); 
 	    		//	I**
 	    		//	IX*
 	    		//	I**
-	    		if(CellLife.theWorld.getCell(this.position.x-cmptXmin, this.position.y+i).getMeat() !=0 )
+	    		if(CellLife.theWorld.getCell(this.position.x+cmptXmin, this.position.y+i).getMeat() !=0 )
 	    		{
 		    		foodFound=true;	
 		    		positionX=this.position.x-cmptXmin;
@@ -88,22 +94,28 @@ public class Cannibal extends Subject
 		    		positionY=this.position.y+i;
 		    	}
 	    	}
-    	}
+	    	System.out.println("fin");
     	
-    	
-    	//look if all the world as been checked
-    	if(this.position.x-cmptXmin<=0 && this.position.x+cmptXmax>World.HEIGHT)
-    		if(this.position.y-cmptYmin<=0 && this.position.y+cmptYmax>World.HEIGHT)
-    	    	fullMake = true;
-    	
-    	//protection for overflow
-    	cmptXmin = this.position.x-cmptXmin>0?cmptXmin++:cmptXmin;
-    	cmptXmax = this.position.x+cmptXmax<World.HEIGHT?cmptXmax++:cmptXmax;
-    		
-    	//protection
-    	cmptYmin = this.position.y-cmptYmin>0?cmptYmin++:cmptYmin;
-    	cmptYmax = this.position.y+cmptYmax>World.WIDTH?cmptYmax++:cmptYmax;
-    	
+	    	
+	    	//look if all the world as been checked
+	    	if(this.position.x+cmptXmin<=0 && this.position.x+cmptXmax>=World.HEIGHT)
+	    	{
+	    		if(this.position.y+cmptYmin<=0 && this.position.y+cmptYmax>=World.HEIGHT)
+	    		{
+	    	    	fullMake = true;
+	    		}
+	    	}
+	    	
+	    	//protection for overflow
+	    	cmptXmin = ((this.position.x+cmptXmin)>0)?cmptXmin-1:cmptXmin;
+	    	cmptXmax = ((this.position.x+cmptXmax)<World.HEIGHT)?cmptXmax+1:cmptXmax;
+	    		
+	    	//protection
+	    	cmptYmin = ((this.position.y-cmptYmin)>0)?cmptYmin-1:cmptYmin;
+	    	cmptYmax = ((this.position.y+cmptYmax)>World.WIDTH)?cmptYmax+1:cmptYmax;
+	    }
+
+		System.out.println("out");    	
     	//return the most efficient cell
     	return(CellLife.theWorld.getCell(positionX, positionY));
     				

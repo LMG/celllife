@@ -7,6 +7,7 @@ public class World extends Thread{
 	public static final int HEIGHT = 40 ;
 	public static final int WIDTH= 40 ;
 	
+	//TODO:Actually be the right number
 	public static final int NUMBER_RABBIT = 10;
 	public static final int NUMBER_CANNIBAL = 10;
 	public static final int NUMBER_ERRATIC = 10;
@@ -82,26 +83,26 @@ public class World extends Thread{
 		}
 		
 		//placement des Cannibals
-		for(int numberCannibal= NUMBER_CANNIBAL; numberCannibal>= 0; numberCannibal--)
-		{
-			randHeigth = (int) ((Math.random())*100) % HEIGHT;
-			randWidth = (int) ((Math.random())*100) % WIDTH;
-			
-			subject = new Cannibal(cellTab[randHeigth][randWidth], 100);
-			cellTab[randHeigth][randWidth].getSubjects().add(subject);
-			subjects.add(subject);
-		}
+//		for(int numberCannibal= NUMBER_CANNIBAL; numberCannibal>= 0; numberCannibal--)
+//		{
+//			randHeigth = (int) ((Math.random())*100) % HEIGHT;
+//			randWidth = (int) ((Math.random())*100) % WIDTH;
+//			
+//			subject = new Cannibal(cellTab[randHeigth][randWidth], 100);
+//			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+//			subjects.add(subject);
+//		}
 		
 		//placement des Gluttons
-		for(int numberGlutton= NUMBER_GLUTTON; numberGlutton>= 0; numberGlutton--)
-		{
-			randHeigth = (int) ((Math.random())*100) % HEIGHT;
-			randWidth = (int) ((Math.random())*100) % WIDTH;
-			
- 			subject = new Glutton(cellTab[randHeigth][randWidth], 100);
-			cellTab[randHeigth][randWidth].getSubjects().add(subject);
-			subjects.add(subject);
-		}
+//		for(int numberGlutton= NUMBER_GLUTTON; numberGlutton>= 0; numberGlutton--)
+//		{
+//			randHeigth = (int) ((Math.random())* HEIGHT);
+//			randWidth = (int) ((Math.random())* WIDTH);
+//			
+// 			subject = new Glutton(cellTab[randHeigth][randWidth], 100);
+//			cellTab[randHeigth][randWidth].getSubjects().add(subject);
+//			subjects.add(subject);
+//		}
 	}
 	
 	/*

@@ -80,8 +80,10 @@ public abstract class Subject
     	int deplacementY=0;
     	Cell currentCell = this.position;
     	
+    	System.out.println(this);
     	//new cell after moving
     	Cell destinationCell = this.direction();
+    	System.out.println("PONG");
     	
     	//delete subjects on the old cell
 		currentCell.getSubjects().remove(this);
@@ -104,6 +106,29 @@ public abstract class Subject
 		
 		//less energy after moving
 		this.energy = this.energy-ENERGY_MOVE;
+    }
+    
+    protected Cell nearestCell(Subject sub )
+    {
+    	Cell pos = sub.position;
+    	
+    	int cmptXmin = 0;
+    	int cmptXmax = 0;
+    	
+    	int cmptYmin = 0;
+    	int cmptYmax = 0;
+    	
+    	for(int i = cmptXmin ; i <= cmptXmax ; i++)
+    	{
+    		if(( sub instanceof Cannibal) || ( sub instanceof Glutton))
+    		{
+	    		if(CellLife.theWorld.getCell(pos.x+i , pos.y+cmptYmin ).getMeat() != 0)
+	    		{
+	    			
+	    		}
+    		}
+    	}
+    	return sub.position;
     }
     
     protected abstract Cell direction();

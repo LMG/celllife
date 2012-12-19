@@ -94,12 +94,13 @@ public class Rabbit extends Subject
     	    	fullMake = true;
     	
     	//protection for overflow
-    	cmptXmin = this.position.x-cmptXmin>0?cmptXmin++:cmptXmin;
-    	cmptXmax = this.position.x+cmptXmax<World.HEIGHT?cmptXmax++:cmptXmax;
+    	cmptXmin = this.position.x-cmptXmin>0?cmptXmin+1:cmptXmin;
+    	cmptXmax = this.position.x+cmptXmax<World.HEIGHT?cmptXmax+1:cmptXmax;
     		
     	//protection
-    	cmptYmin = this.position.y-cmptYmin>0?cmptYmin++:cmptYmin;
-    	cmptYmax = this.position.y+cmptYmax>World.WIDTH?cmptYmax++:cmptYmax;
+    	cmptYmin = ((this.position.y-cmptYmin)>0)?cmptYmin+1:cmptYmin;
+    	cmptYmax = ((this.position.y+cmptYmax)>World.WIDTH)?cmptYmax+1:cmptYmax;
+    	
     	
     	//return the most efficient cell
     	return(CellLife.theWorld.getCell(positionX, positionY));
