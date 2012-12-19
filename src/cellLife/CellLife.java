@@ -1,25 +1,25 @@
 package cellLife;
 
 /**
- *
+ * Classe principale du programme.
  */
 public final class CellLife
 {
     /**
-     * @param args
+     * Le terminal.
      */
     private static Terminal theTerminal;
     /**
-     * @param args
+     * La vue.
      */
     private static View theView;
     /**
-     * @param args
+     * Le monde.
      */
     private static World theWorld;
 
     /**
-     * @param args
+     * Constructeur: instanciation des éléments.
      */
     private CellLife()
     {
@@ -35,8 +35,8 @@ public final class CellLife
         theView.start();
     }
 
-    /** Simulation start.
-     * 
+    /** 
+     * Démarrage de la simulation.
      * @param args arguments
      */
     //On autorise cette méthode principale: c'est le point d'entrée du programme
