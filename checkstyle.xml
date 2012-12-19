@@ -113,7 +113,10 @@
     <module name="MissingCtor"/>
     <module name="MissingSwitchDefault"/>
     <module name="ModifiedControlVariable"/>
-    <module name="MultipleStringLiterals"/>
+    <module name="MultipleStringLiterals">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="MultipleVariableDeclarations"/>
     <module name="NestedForDepth"/>
     <module name="NestedIfDepth"/>

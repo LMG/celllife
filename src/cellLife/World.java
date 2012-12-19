@@ -77,7 +77,26 @@ public class World extends Thread
     {
         this.theView = aView;
     }
+    
+    /**
+     * Renvoie la liste des sujets.
+     * @return La list des sujets.
+     */
+    public final List<Subject> getSubjects()
+    {
+        return this.subjects;
+    }
 
+    /**
+     * Permet de définir la liste des sujets.
+     * @param subj la list des sujets.
+     */
+    public final void setSubjects(final List<Subject> subj)
+
+    {
+        this.subjects = subj;
+    }
+    
     /**
      * Renvoie la cellule correspondante.
      * 
@@ -244,22 +263,10 @@ public class World extends Thread
             try
             {
                 Thread.sleep(STEP_DURATION);
-            }
-            catch (InterruptedException ex)
+            } catch (InterruptedException ex)
             {
                 System.out.println("?");
             }
         }
-    }
-
-    public List<Subject> getSubjects()
-    {
-        return this.subjects;
-    }
-
-    public void setSubjects(ArrayList<Subject> subj)
-
-    {
-        subjects = subj;
     }
 }
