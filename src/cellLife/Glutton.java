@@ -8,15 +8,15 @@ public class Glutton extends Subject{
 	
 
     /******************** Constructeurs ********************/
-	public Glutton(Cell position)
+	public Glutton(Cell position, World world)
 	{
-		super(position);
+		super(position, world);
 	}
 	
 	
-	public Glutton(Cell position ,int energy)
+	public Glutton(Cell position ,int energy, World world)
 	{
-		super(position , energy);
+		super(position , energy, world);
 
 	}
     
@@ -48,8 +48,8 @@ public class Glutton extends Subject{
 	    		//	*** <== check this raw
 	    		//	*X*
 	    		//	***
-		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y-cmptYmin).getMeat() !=0 || 
-		    			CellLife.theWorld.getCell(this.position.x+i, this.position.y-cmptYmin).getVegetables() !=0)
+		    	if(world.getCell(this.position.x+i, this.position.y-cmptYmin).getMeat() !=0 || 
+		    	        world.getCell(this.position.x+i, this.position.y-cmptYmin).getVegetables() !=0)
 		    	{
 		    		foodFound=true;	
 		    		positionX=this.position.x+i;
@@ -59,8 +59,8 @@ public class Glutton extends Subject{
 	    		//	*** 
 	    		//	*X*
 	    		//	*** <== check this raw
-		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y+cmptYmax).getMeat() !=0 ||
-		    			CellLife.theWorld.getCell(this.position.x+i, this.position.y+cmptYmax).getVegetables()!=0)
+		    	if(world.getCell(this.position.x+i, this.position.y+cmptYmax).getMeat() !=0 ||
+		    	        world.getCell(this.position.x+i, this.position.y+cmptYmax).getVegetables()!=0)
 		    	{
 		    		foodFound=true;	
 		    		positionX=this.position.x+i;
@@ -72,8 +72,8 @@ public class Glutton extends Subject{
 	    		//	I**
 	    		//	IX*
 	    		//	I**
-	    		if(CellLife.theWorld.getCell(this.position.x-cmptXmin, this.position.y+i).getMeat() !=0 ||
-	    				CellLife.theWorld.getCell(this.position.x-cmptXmin, this.position.y+i).getVegetables() !=0)
+	    		if(world.getCell(this.position.x-cmptXmin, this.position.y+i).getMeat() !=0 ||
+	    		        world.getCell(this.position.x-cmptXmin, this.position.y+i).getVegetables() !=0)
 	    		{
 		    		foodFound=true;	
 		    		positionX=this.position.x-cmptXmin;
@@ -83,8 +83,8 @@ public class Glutton extends Subject{
 	    		//	**I
 	    		//	*XI
 	    		//	**I
-	    		if(CellLife.theWorld.getCell(this.position.x+cmptXmax, this.position.y+i).getMeat() !=0 ||
-	    				CellLife.theWorld.getCell(this.position.x+cmptXmax, this.position.y+i).getVegetables() !=0 )
+	    		if(world.getCell(this.position.x+cmptXmax, this.position.y+i).getMeat() !=0 ||
+	    		        world.getCell(this.position.x+cmptXmax, this.position.y+i).getVegetables() !=0 )
 	    		{
 		    		foodFound=true;	
 		    		positionX=this.position.x+cmptXmax;
@@ -108,7 +108,7 @@ public class Glutton extends Subject{
     	cmptYmax = this.position.y+cmptYmax>World.WIDTH?cmptYmax++:cmptYmax;
     	
     	//return the most efficient cell
-    	return(CellLife.theWorld.getCell(positionX, positionY));
+    	return(world.getCell(positionX, positionY));
     				
     }
     

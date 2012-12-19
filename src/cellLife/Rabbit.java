@@ -7,15 +7,15 @@ package cellLife;
 public class Rabbit extends Subject
 {
     /******************** Constructeurs ********************/
-	public Rabbit(Cell position)
+	public Rabbit(Cell position, World world)
 	{
-		super(position);
+		super(position, world);
 	}
 	
 	
-	public Rabbit(Cell position ,int energy)
+	public Rabbit(Cell position ,int energy, World world)
 	{
-		super(position , energy);
+		super(position , energy, world);
 
 	}
 	
@@ -48,7 +48,7 @@ public class Rabbit extends Subject
 	    		//	*** <== check this raw
 	    		//	*X*
 	    		//	***
-		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y-cmptYmin).containRabbit() !=false )
+		    	if(world.getCell(this.position.x+i, this.position.y-cmptYmin).containRabbit() !=false )
 		    	{
 		    		rabbitFound=true;	
 		    		positionX=this.position.x+i;
@@ -58,7 +58,7 @@ public class Rabbit extends Subject
 	    		//	*** 
 	    		//	*X*
 	    		//	*** <== check this raw
-		    	if(CellLife.theWorld.getCell(this.position.x+i, this.position.y+cmptYmax).containRabbit() != false )
+		    	if(world.getCell(this.position.x+i, this.position.y+cmptYmax).containRabbit() != false )
 		    	{
 		    		rabbitFound=true;	
 		    		positionX=this.position.x+i;
@@ -70,7 +70,7 @@ public class Rabbit extends Subject
 	    		//	I**
 	    		//	IX*
 	    		//	I**
-	    		if(CellLife.theWorld.getCell(this.position.x-cmptXmin, this.position.y+i).containRabbit() !=false )
+	    		if(world.getCell(this.position.x-cmptXmin, this.position.y+i).containRabbit() !=false )
 	    		{
 		    		rabbitFound=true;	
 		    		positionX=this.position.x-cmptXmin;
@@ -80,7 +80,7 @@ public class Rabbit extends Subject
 	    		//	**I
 	    		//	*XI
 	    		//	**I
-	    		if(CellLife.theWorld.getCell(this.position.x+cmptXmax, this.position.y+i).containRabbit() !=false )
+	    		if(world.getCell(this.position.x+cmptXmax, this.position.y+i).containRabbit() !=false )
 	    		{
 		    		rabbitFound=true;	
 		    		positionX=this.position.x+cmptXmax;
@@ -104,7 +104,7 @@ public class Rabbit extends Subject
     	cmptYmax = this.position.y+cmptYmax>World.WIDTH?cmptYmax++:cmptYmax;
     	
     	//return the most efficient cell
-    	return(CellLife.theWorld.getCell(positionX, positionY));
+    	return(world.getCell(positionX, positionY));
     				
     }
     

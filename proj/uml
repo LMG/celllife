@@ -40,7 +40,7 @@ class Cell {
 	final int y
 }
 
-World --> "*" Subject
+World "1"<--> "*" Subject
 Cell "1" <--> "*" Subject 
 Cannibal --|> Subject
 Glutton --|> Subject
