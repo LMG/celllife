@@ -58,16 +58,16 @@ public class View extends Thread{
 					drawSprite("void", i, j, g);
 
 					//draw food
-					if(theWorld.cellTab[i][j].getVegetables()>0)
+					if(theWorld.getCell(i,j).getVegetables()>0)
 						drawSprite("vegetable", i, j, g);
-					if(theWorld.cellTab[i][j].getMeat()>0)
+					if(theWorld.getCell(i,j).getMeat()>0)
 						drawSprite("meat", i, j, g);
 					
 					//draw subjects
 					Subject subject = null;
-					for(int nbSubjects=theWorld.cellTab[i][j].getSubjects().size()-1; nbSubjects>=0; nbSubjects--)
+					for(int nbSubjects=theWorld.getCell(i,j).getSubjects().size()-1; nbSubjects>=0; nbSubjects--)
 					{
-						subject = theWorld.cellTab[i][j].getSubjects().get(nbSubjects);
+						subject = theWorld.getCell(i,j).getSubjects().get(nbSubjects);
 						if( subject instanceof Cannibal)
 						{
 							drawSprite("cannibal", i, j, g);
