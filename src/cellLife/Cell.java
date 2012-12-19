@@ -80,6 +80,7 @@ public class Cell
 		this.meat = value;
 	}
 	
+
 	public foodType haveFood()
 	{
 		foodType answer = foodType.NONE;
@@ -93,5 +94,5 @@ public class Cell
 		}
 		return answer;
 	}
-	
+
 }
