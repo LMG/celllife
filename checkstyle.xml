@@ -19,7 +19,10 @@
     <module name="AnnotationUseStyle"/>
     <module name="MissingDeprecated"/>
     <module name="MissingOverride"/>
-    <module name="PackageAnnotation"/>
+    <module name="PackageAnnotation">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="SuppressWarnings"/>
     <module name="JavadocMethod">
       <property name="suppressLoadErrors" value="true"/>
