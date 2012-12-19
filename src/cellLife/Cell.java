@@ -1,3 +1,6 @@
+package cellLife;
+
+
 import java.util.ArrayList;
 
 /**
