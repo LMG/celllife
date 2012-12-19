@@ -83,9 +83,13 @@ public class Cell
 	public foodType haveFood()
 	{
 		foodType answer = foodType.NONE;
-		if (this.getMeat() != 0 || this .getVegetables()!= 0)
+		if (this.getMeat() != 0 ) 
 		{
-			answer = true;
+			answer = foodType.MEAT;
+		}
+		if(this .getVegetables()!= 0)
+		{
+			answer = foodType.VEGETABLES;
 		}
 		return answer;
 	}

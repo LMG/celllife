@@ -27,13 +27,13 @@ public class Erratic extends Subject
 		int positionY=this.position.y;
 		
 		//déplacement aléaoire 
-		int randx = (int) (((Math.random())*100) % 2)-1;
-		int randy = (int) (((Math.random())*100) % 2)-1;
+		int randx = ((int) (Math.random() * 2))-1;
+		int randy = ((int) (Math.random() *2))-1;
 		
 		while(randx == 0 && randy == 0 )
 		{
-			randx = (((int) Math.random()) * 2)-1;
-			randy = (((int) Math.random()) * 2)-1;
+			randx = ((int) (Math.random() * 2))-1;
+			randy = ((int) (Math.random() * 2))-1;
 		}
 		
 		if (positionX+randx<=World.HEIGHT && positionX+randx>= 0 )
