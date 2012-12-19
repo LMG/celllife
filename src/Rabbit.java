@@ -5,15 +5,15 @@
 public class Rabbit extends Subject
 {
     /******************** Constructeurs ********************/
-	public Rabbit(Cell position)
+	public Rabbit(Cell position, World world)
 	{
-		super(position);
+		super(position, world);
 	}
 	
 	
-	public Rabbit(Cell position ,int energy)
+	public Rabbit(Cell position ,int energy, World world)
 	{
-		super(position , energy);
+		super(position , energy, world);
 
 	}
 	

@@ -6,15 +6,15 @@ public class Glutton extends Subject{
 	
 
     /******************** Constructeurs ********************/
-	public Glutton(Cell position)
+	public Glutton(Cell position, World world)
 	{
-		super(position);
+		super(position, world);
 	}
 	
 	
-	public Glutton(Cell position ,int energy)
+	public Glutton(Cell position ,int energy, World world)
 	{
-		super(position , energy);
+		super(position , energy, world);
 
 	}
     

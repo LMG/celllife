@@ -73,5 +73,4 @@ public class Cell
 		this.meat = value;
 	}
 	
-	
 }

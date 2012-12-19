@@ -5,15 +5,15 @@ public class Erratic extends Subject
     /******************** Constructeurs ********************/
 	
 	
-	public Erratic(Cell position)
+	public Erratic(Cell position, World world)
 	{
-		super(position);
+		super(position, world);
 	}
 	
 	
-	public Erratic(Cell position ,int energy)
+	public Erratic(Cell position ,int energy, World world)
 	{
-		super(position , energy);
+		super(position , energy, world);
 
 	}
 	

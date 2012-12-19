@@ -64,7 +64,7 @@ public class World extends Thread{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
 			
-			subject = new Erratic(cellTab[randHeigth][randWidth], 100);
+			subject = new Erratic(cellTab[randHeigth][randWidth], 100, this);
 			cellTab[randHeigth][randWidth].getSubjects().add(subject);
 			subjects.add(subject);
 		}
@@ -76,7 +76,7 @@ public class World extends Thread{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
 			
-			subject = new Rabbit(cellTab[randHeigth][randWidth], 100);
+			subject = new Rabbit(cellTab[randHeigth][randWidth], 100, this);
 			cellTab[randHeigth][randWidth].getSubjects().add(subject);
 			subjects.add(subject);
 		}
@@ -87,7 +87,7 @@ public class World extends Thread{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
 			
-			subject = new Cannibal(cellTab[randHeigth][randWidth], 100);
+			subject = new Cannibal(cellTab[randHeigth][randWidth], 100, this);
 			cellTab[randHeigth][randWidth].getSubjects().add(subject);
 			subjects.add(subject);
 		}
@@ -98,7 +98,7 @@ public class World extends Thread{
 			randHeigth = (int) ((Math.random())*100) % HEIGHT;
 			randWidth = (int) ((Math.random())*100) % WIDTH;
 			
- 			subject = new Glutton(cellTab[randHeigth][randWidth], 100);
+ 			subject = new Glutton(cellTab[randHeigth][randWidth], 100, this);
 			cellTab[randHeigth][randWidth].getSubjects().add(subject);
 			subjects.add(subject);
 		}
@@ -150,4 +150,14 @@ public class World extends Thread{
 			catch(InterruptedException ex) {System.out.println("?");}
 		}
 	}
+	
+	public ArrayList<Subject> getSubjects()
+    {
+        return subjects;
+    }
+    
+    public void setSubjects(ArrayList<Subject> subj)
+    {
+        subjects=subj;
+    }
 }
