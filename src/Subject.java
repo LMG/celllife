@@ -110,7 +110,12 @@ public abstract class Subject
     
     protected Cell nearestCell(Subject sub )
     {
+    	boolean foodFound = false;
+    	
     	Cell pos = sub.position;
+    	    	
+    	int cellDirectionX = pos.x;
+    	int cellDirectionY = pos.y;
     	
     	int cmptXmin = 0;
     	int cmptXmax = 0;
@@ -118,16 +123,37 @@ public abstract class Subject
     	int cmptYmin = 0;
     	int cmptYmax = 0;
     	
-    	for(int i = cmptXmin ; i <= cmptXmax ; i++)
+    	
+    	for (int i = (pos.x + cmptXmin); i <= pos.x; i++)
     	{
-    		if(( sub instanceof Cannibal) || ( sub instanceof Glutton))
-    		{
-	    		if(CellLife.theWorld.getCell(pos.x+i , pos.y+cmptYmin ).getMeat() != 0)
-	    		{
-	    			
-	    		}
-    		}
-    	}
+    		
+    		//check =>	= = = X X 
+    	    //  		X ! ! ! X			= : currently checking
+    	    //			X ! O ! X			O : Subject
+    	    //			X ! ! ! X			! : always checked
+    	    //			X X X X X			X : not check
+	    	if (CellLife.theWorld.getCell(i , pos.y + cmptYmin).haveFood() != true)
+	    	{
+	    		if(( sub instanceof Cannibal || sub instanceof Glutton) && )
+	    		foodFound = true;
+	    		cellDirectionX = i;
+	    		cellDirectionY = pos.y + cmptYmin;
+	    	}
+	    	
+	    	// 			X X X X X
+	        //  		X ! ! ! X			= : currently checking
+	        //			X ! O ! X			O : Subject
+	        //			X ! ! ! X			! : always checked
+	        //check =>	= = = X X			X : not check
+	    	if (CellLife.theWorld.getCell(i , pos.y + cmptYmax).haveFood() == true)
+	    	{
+	    		foodFound = true;
+	    		cellDirectionX = i;
+	    		cellDirectionY = pos.y + cmptYmax;
+	    	}
+    		
+     	}
+    
     	return sub.position;
     }
     

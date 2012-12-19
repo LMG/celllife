@@ -5,6 +5,10 @@ import java.util.ArrayList;
  */
 public class Cell 
 {
+	public enum foodType {
+		NONE, VEGETABLES, MEAT;
+	}
+	
 	public final int x;
 	public final int y;
 	
@@ -73,5 +77,14 @@ public class Cell
 		this.meat = value;
 	}
 	
+	public foodType haveFood()
+	{
+		foodType answer = foodType.NONE;
+		if (this.getMeat() != 0 || this .getVegetables()!= 0)
+		{
+			answer = true;
+		}
+		return answer;
+	}
 	
 }
