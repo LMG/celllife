@@ -35,6 +35,7 @@ public final class CellLife
         theView.start();
     }
 
+
     /** 
      * Démarrage de la simulation.
      * @param args arguments

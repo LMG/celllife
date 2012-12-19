@@ -8,6 +8,10 @@ import java.util.ArrayList;
  */
 public class Cell 
 {
+	public enum foodType {
+		NONE, VEGETABLES, MEAT;
+	}
+	
 	public final int x;
 	public final int y;
 	
@@ -37,9 +41,9 @@ public class Cell
 	{
 		int index = 0;
 		boolean lapinFound = false;
-		while(subjects.size()>index && subjects.get(index) != null)
+		while(subjects.size()>index)// && subjects.get(index) != null)
 		{
-			if( subjects.get(index) instanceof Cannibal)
+			if( subjects.get(index) instanceof Rabbit)
 				lapinFound = true;
 			index++;
 		}
@@ -76,4 +80,19 @@ public class Cell
 		this.meat = value;
 	}
 	
+
+	public foodType haveFood()
+	{
+		foodType answer = foodType.NONE;
+		if (this.getMeat() != 0 ) 
+		{
+			answer = foodType.MEAT;
+		}
+		if(this .getVegetables()!= 0)
+		{
+			answer = foodType.VEGETABLES;
+		}
+		return answer;
+	}
+
 }
