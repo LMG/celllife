@@ -78,37 +78,37 @@ public abstract class Subject
 
     protected void move()
     {
-    	  int deplacementX = 0;
-          int deplacementY = 0;
-          Cell currentCell = this.position;
+        int deplacementX = 0;
+        int deplacementY = 0;
+        Cell currentCell = this.position;
 
-          // new cell after moving
-          Cell destinationCell = this.direction();
+        // new cell after moving
+        Cell destinationCell = this.direction();
 
-          // delete subjects on the old cell
-          currentCell.getSubjects().remove(this);
+        // delete subjects on the old cell
+        currentCell.getSubjects().remove(this);
 
-          if (destinationCell.x - currentCell.x > 0)
-              deplacementX = +1;
-          if (destinationCell.x - currentCell.x < 0)
-              deplacementX = -1;
+        if (destinationCell.x - currentCell.x > 0)
+            deplacementX = +1;
+        if (destinationCell.x - currentCell.x < 0)
+            deplacementX = -1;
 
-          if (destinationCell.y - currentCell.y > 0)
-              deplacementY = +1;
-          if (destinationCell.y - currentCell.y < 0)
-              deplacementY = -1;
+        if (destinationCell.y - currentCell.y > 0)
+            deplacementY = +1;
+        if (destinationCell.y - currentCell.y < 0)
+            deplacementY = -1;
 
-          // add subject on the new cell
-          world.cellTab[this.position.x + deplacementX][this.position.y
-                  + deplacementY].getSubjects().add(this);
+        // add subject on the new cell
+        world.cellTab[this.position.x + deplacementX][this.position.y
+                + deplacementY].getSubjects().add(this);
 
-          // refresh local position
-          this.position = world.cellTab[this.position.x
-                  + deplacementX][this.position.y + deplacementY];
+        // refresh local position
+        this.position = world.cellTab[this.position.x
+                + deplacementX][this.position.y + deplacementY];
 
-          // less energy after moving
-          this.energy = this.energy - ENERGY_MOVE;
-      }
+        // less energy after moving
+        this.energy = this.energy - ENERGY_MOVE;
+    }
     
     protected Cell nearestCell(Subject sub )
     {

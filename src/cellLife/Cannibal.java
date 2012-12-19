@@ -31,6 +31,8 @@ public class Cannibal extends Subject
 		return this.position;
 	}
 	
+
+	
 	protected void eat()
 
     {   
