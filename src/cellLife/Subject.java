@@ -99,12 +99,13 @@ public abstract class Subject
             deplacementY = -1;
 
         // add subject on the new cell
-        world.cellTab[this.position.x + deplacementX][this.position.y
-                + deplacementY].getSubjects().add(this);
+        world.getCell(this.position.x + deplacementX ,this.position.y
+                + deplacementY).getSubjects().add(this);
 
         // refresh local position
-        this.position = world.cellTab[this.position.x + deplacementX][this.position.y
-                + deplacementY];
+        this.position = world.getCell(this.position.x
+                + deplacementX,this.position.y + deplacementY);
+
 
         // less energy after moving
         this.energy = this.energy - ENERGY_MOVE;
