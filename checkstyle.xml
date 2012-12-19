@@ -73,7 +73,9 @@
     <module name="RedundantModifier"/>
     <module name="AvoidNestedBlocks"/>
     <module name="EmptyBlock"/>
-    <module name="LeftCurly"/>
+    <module name="LeftCurly">
+      <property name="option" value="nl"/>
+    </module>
     <module name="NeedBraces"/>
     <module name="RightCurly"/>
     <module name="AvoidInlineConditionals"/>
@@ -149,6 +151,7 @@
     <module name="UpperEll"/>
     <module name="Regexp">
       <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="OuterTypeFilename"/>
   </module>
