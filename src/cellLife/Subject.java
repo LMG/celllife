@@ -99,11 +99,11 @@ public abstract class Subject
             deplacementY = -1;
 
         // add subject on the new cell
-        CellLife.theWorld.cellTab[this.position.x + deplacementX][this.position.y
+        world.cellTab[this.position.x + deplacementX][this.position.y
                 + deplacementY].getSubjects().add(this);
 
         // refresh local position
-        this.position = CellLife.theWorld.cellTab[this.position.x
+        this.position = world.cellTab[this.position.x
                 + deplacementX][this.position.y + deplacementY];
 
         // less energy after moving

@@ -52,7 +52,7 @@ public class Cannibal extends Subject
 				// *** <== check this raw
 				// *X*
 				// ***
-				if (CellLife.theWorld.getCell(this.position.x + i,
+				if (world.getCell(this.position.x + i,
 				        this.position.y - cmptYmin).getMeat() != 0)
 				{
 					foodFound = true;
@@ -63,7 +63,7 @@ public class Cannibal extends Subject
 				// ***
 				// *X*
 				// *** <== check this raw
-				if (CellLife.theWorld.getCell(this.position.x + i,
+				if (world.getCell(this.position.x + i,
 				        this.position.y + cmptYmax).getMeat() != 0)
 				{
 					foodFound = true;
@@ -76,7 +76,7 @@ public class Cannibal extends Subject
 				// I**
 				// IX*
 				// I**
-				if (CellLife.theWorld.getCell(this.position.x - cmptXmin,
+				if (world.getCell(this.position.x - cmptXmin,
 				        this.position.y + i).getMeat() != 0)
 				{
 					foodFound = true;
@@ -87,7 +87,7 @@ public class Cannibal extends Subject
 				// **I
 				// *XI
 				// **I
-				if (CellLife.theWorld.getCell(this.position.x + cmptXmax,
+				if (world.getCell(this.position.x + cmptXmax,
 				        this.position.y + i).getMeat() != 0)
 				{
 					foodFound = true;
@@ -115,7 +115,7 @@ public class Cannibal extends Subject
 		        : cmptYmax;
 
 		// return the most efficient cell
-		return (CellLife.theWorld.getCell(positionX, positionY));
+		return (world.getCell(positionX, positionY));
 
 	}
 	

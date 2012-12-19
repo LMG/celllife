@@ -42,7 +42,7 @@ public class Erratic extends Subject
 		if (positionY+randy<=World.HEIGHT && positionY+randy>= 0 )
 			positionY = positionY+randy;
 		
-		return(CellLife.theWorld.getCell(positionX, positionY));
+		return(world.getCell(positionX, positionY));
 		
 			}
 	
