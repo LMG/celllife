@@ -103,8 +103,8 @@ public abstract class Subject
                 + deplacementY].getSubjects().add(this);
 
         // refresh local position
-        this.position = world.cellTab[this.position.x
-                + deplacementX][this.position.y + deplacementY];
+        this.position = world.cellTab[this.position.x + deplacementX][this.position.y
+                + deplacementY];
 
         // less energy after moving
         this.energy = this.energy - ENERGY_MOVE;
@@ -120,7 +120,7 @@ public abstract class Subject
             this.world.getSubjects().remove(this);
         }
     }
-
+    
     protected void eat()
     {
         while (this.energy != ENERGY_MAX
