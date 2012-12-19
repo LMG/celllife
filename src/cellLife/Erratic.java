@@ -1,3 +1,4 @@
+package cellLife;
 
 
 public class Erratic extends Subject

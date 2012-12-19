@@ -1,3 +1,5 @@
+package cellLife;
+
 /**
  *
  * @author Louis-Marie Givel
