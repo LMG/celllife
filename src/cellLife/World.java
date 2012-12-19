@@ -18,7 +18,7 @@ public class World extends Thread
      * Largeur de la zone de jeu (en nombre de cases).
      */
     public static final int WIDTH = 40;
-    
+
     /**
      * La durée d'une itération.
      */
@@ -69,17 +69,22 @@ public class World extends Thread
 
     /**
      * Constructeur: fait le lien avec vue.
-     * @param aView une vue.
+     * 
+     * @param aView
+     *            une vue.
      */
     World(final View aView)
     {
         this.theView = aView;
     }
-    
+
     /**
      * Renvoie la cellule correspondante.
-     * @param height la coordonnée en y
-     * @param width la coordonée en x
+     * 
+     * @param height
+     *            la coordonnée en y
+     * @param width
+     *            la coordonée en x
      * @return Une cellule du tableau
      */
     public final Cell getCell(final int height, final int width)
@@ -112,7 +117,6 @@ public class World extends Thread
         this.theView.endSimulation();
     }
 
-
     /**
      * Intialisation du monde: ajout des objets...
      */
@@ -132,54 +136,54 @@ public class World extends Thread
 
         // Adding all the subjects to the world
         // placement des erratics
-        for (int numberErratic = NUMBER_ERRATIC; numberErratic >= 0; 
-                numberErratic -= 1)
+        for (int numberErratic = NUMBER_ERRATIC; 
+                numberErratic >= 0; numberErratic -= 1)
         {
             randHeigth = (int) ((Math.random()) * HEIGHT) % HEIGHT;
             randWidth = (int) ((Math.random()) * WIDTH) % WIDTH;
 
-            subject = new Erratic(this.cellTab[randHeigth][randWidth], 
-                    DEFAULT_ENERGY);
+            subject = new Erratic(this.cellTab[randHeigth][randWidth],
+                    DEFAULT_ENERGY, this);
             this.cellTab[randHeigth][randWidth].getSubjects().add(subject);
             this.subjects.add(subject);
         }
 
         // placement des Rabbits
-        for (int numberRabbit = NUMBER_RABBIT; numberRabbit >= 0; 
-                numberRabbit -= 1)
+        for (int numberRabbit = NUMBER_RABBIT; 
+                numberRabbit >= 0; numberRabbit -= 1)
         {
 
             randHeigth = (int) ((Math.random()) * HEIGHT) % HEIGHT;
             randWidth = (int) ((Math.random()) * WIDTH) % WIDTH;
 
-            subject = new Rabbit(this.cellTab[randHeigth][randWidth], 
-                    DEFAULT_ENERGY);
+            subject = new Rabbit(this.cellTab[randHeigth][randWidth],
+                    DEFAULT_ENERGY, this);
             this.cellTab[randHeigth][randWidth].getSubjects().add(subject);
             this.subjects.add(subject);
         }
 
         // placement des Cannibals
-        for (int numberCannibal = NUMBER_CANNIBAL; numberCannibal >= 0; 
-                numberCannibal -= 1)
+        for (int numberCannibal = NUMBER_CANNIBAL; 
+                numberCannibal >= 0; numberCannibal -= 1)
         {
             randHeigth = (int) ((Math.random()) * HEIGHT) % HEIGHT;
             randWidth = (int) ((Math.random()) * WIDTH) % WIDTH;
 
-            subject = new Cannibal(this.cellTab[randHeigth][randWidth], 
-                    DEFAULT_ENERGY);
+            subject = new Cannibal(this.cellTab[randHeigth][randWidth],
+                    DEFAULT_ENERGY, this);
             this.cellTab[randHeigth][randWidth].getSubjects().add(subject);
             this.subjects.add(subject);
         }
 
         // placement des Gluttons
-        for (int numberGlutton = NUMBER_GLUTTON; numberGlutton >= 0; 
-                numberGlutton -= 1)
+        for (int numberGlutton = NUMBER_GLUTTON; 
+                numberGlutton >= 0; numberGlutton -= 1)
         {
             randHeigth = (int) ((Math.random()) * HEIGHT) % HEIGHT;
             randWidth = (int) ((Math.random()) * WIDTH) % WIDTH;
 
             subject = new Glutton(this.cellTab[randHeigth][randWidth],
-                    DEFAULT_ENERGY);
+                    DEFAULT_ENERGY, this);
             this.cellTab[randHeigth][randWidth].getSubjects().add(subject);
             this.subjects.add(subject);
         }
@@ -187,7 +191,9 @@ public class World extends Thread
 
     /**
      * range une liste de sujets par ordre d'énergie.
-     * @param subjectList Une ArrayList à classer.
+     * 
+     * @param subjectList
+     *            Une ArrayList à classer.
      * @return Une liste classée par ordre d'énergie.
      */
     final List<Subject> sortByEnergy(final List<Subject> subjectList)
@@ -219,7 +225,9 @@ public class World extends Thread
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Thread#run()
      */
     @Override
@@ -236,23 +244,22 @@ public class World extends Thread
             try
             {
                 Thread.sleep(STEP_DURATION);
-            } catch (InterruptedException ex)
+            }
+            catch (InterruptedException ex)
             {
                 System.out.println("?");
             }
         }
     }
 
-	
-	public ArrayList<Subject> getSubjects()
+    public List<Subject> getSubjects()
     {
-        return subjects;
+        return this.subjects;
     }
-    
-    public void setSubjects(ArrayList<Subject> subj)
-    {
-        subjects=subj;
-    }
-}
 
+    public void setSubjects(ArrayList<Subject> subj)
+
+    {
+        subjects = subj;
+    }
 }
